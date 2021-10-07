@@ -1,0 +1,23 @@
+package net.bit.dat07;
+
+public class Test02 {
+	public static void main(String[] args) {
+		// 첫번째 int 변수 6개 선언 후 값 대입
+		int a =15, b = 54, c=73, d=34, e=48,f=47;
+		System.out.println(a+" "+b+" "+c+" "+d+" "+e+" " +f);
+		
+		String city1 = "제주도";
+		String city2 = "선유도";
+		String city3 = "사량도";
+		String city4 = "여의도";
+		String city5 = "영종도";
+		String city6 = "마라도";
+		System
+		System.out.println(city1 + "관광지");
+		System.out.println(city2 + "관광지");
+		System.out.println(city3 + "관광지");
+		System.out.println(city4 + "관광지");
+		System.out.println(city5 + "관광지");
+		System.out.println(city6 + "관광지");
+	}
+}

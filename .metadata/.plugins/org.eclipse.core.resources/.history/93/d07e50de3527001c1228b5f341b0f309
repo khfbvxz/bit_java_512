@@ -1,0 +1,29 @@
+package net.bit.dat07;
+
+public class Test0String {
+	public static void main(String[] args) {
+		//https://docs.oracle.com/javase/7/docs/index.html    ==>자바플랫폼구조설명
+		//https://docs.oracle.com/javase/7/docs/api/index.html ==> API도움말
+		// char 이해
+		// 자바에서 String 클래스 참조타입
+		
+		String a = "hello"; // 쉽게 편하게 접근 가능
+		String b = new String("hello");
+		char[] c = new char[] {'h','e','l','l','o'};
+		String d = new String(c);
+		String email = "kimtest123@bit.com";
+		
+		//문제 1 startsWith("kim") 포함여부
+		boolean ret1 = email.startsWith("kim");
+		System.out.println(ret1);
+		boolean ret2 = email.endsWith("com");
+		System.out.println(ret2);
+		
+		int ret4 = email.indexOf("123");
+		int ret3 = email.indexOf("789");
+		System.out.println("메일 끝 주소" + ret2);
+		System.out.println("메일 포함여부" + ret3);
+		
+				
+	}
+}

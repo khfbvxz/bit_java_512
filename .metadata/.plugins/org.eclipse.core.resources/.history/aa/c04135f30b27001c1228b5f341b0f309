@@ -1,0 +1,9 @@
+package net.bit.dat07;
+
+public class Test02 {
+	public static void main(String[] args) {
+		// 첫번째 int 변수 6개 선언 후 값 대입
+		int a =15, b = 54, c=73, d=34, e=, 48,f=47;
+		System.out.println(a+" "+b+" "+c+" "+d+" "+e+" " +f);
+	}
+}

@@ -1,0 +1,18 @@
+package net.bit.dat07;
+
+public class Test07char {
+	public static void main(String[] args) {
+		// int , char 쉽게 변환
+		// 미국표준혐회 아스키코드 참고
+		
+		char a ='A', b = 'Z', c=57		;
+		System.out.println(a+"\t"+b+"\t"+c);
+		
+		System.out.println();
+		int x = (int)a;
+		int y = (int)b;
+		int z = (int)c;
+		System.out.println(x+"\t"+y+"\t"+z);
+		
+	}
+}

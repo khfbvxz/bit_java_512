@@ -1,0 +1,17 @@
+package net.bit.dat07;
+
+public class HomeWork04 {
+	public static void main(String[] args) {
+		// startsWith()  endsWith() indexOf() length()  substring()
+		String email = "bitcamp@sm.com";
+		//문제 1 메일 자릿수 12~20 자릿 수 체크
+		//문제 2 메일 끝도메인 .com 체크 ends
+		//문제 3 메일 @ 포함 여부 indexOf("@")
+		
+		
+		int num1 = email.indexOf("@");
+		System.out.println(num1);
+		
+		
+	}
+}
