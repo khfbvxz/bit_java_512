@@ -1,36 +1,37 @@
 package net.bit.day08;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Bit04 {
 	public static void main(String[] args) {
-		// 문제 이중 for반복문으로 별출력 배열
-//		String[] star = {"*","*","*","*","*","*","*","*","*","*"};
-//		Scanner sc = new Scanner(System.in);
-//		System.out.print("별 출력 줄 수 입력 : ");
-//		int n = sc.nextInt();
-		char[][] star = {
-				{'★'},
-				{'★','★'},
-				{'★','★','★'},
-				{'*','*','*','*',' '},
-				{'*','*','*','*','*'},
-				{'*','*','*','*','*','*'},
-				{'*','*','*','*','*','*','*'}
-		};
-		for (int i = 0; i < star.length; i++) {
-			for (int j = 0; j <star[i].length; j++) {
-//				System.out.print("*");
-				System.out.print(star[i][j]);
-			}
-			System.out.println();
+		// 배열은 선언만 해도 자동 초기화!
+		// 2차원에 별 대입
+		char[][] star = {{'*'},{'*','*'},{'*','*','*'},{'*','*','*','*'},{'*','*','*','*','*'},};
+		int[][] data = {{1,2,3,4},{7,8,9},{10,11},{12}};
+		for(char r []:star ) {
+			for(char a :r) {
+				System.out.print(a);
+			}System.out.println();
+		}
+		for(int r []:data ) {
+			for(int a :r) {
+				System.out.print(a);
+			}System.out.println();
 		}
 		
-		for (char row[] : star) {
-	         for (char r : row) {
-	            System.out.print(r);
-	         }
-	         System.out.println();
-	      }// for i END
-	}
-}
+		for(int i = 0 ; i<star.length;i++) {
+			for(int j = 0 ; j<star[i].length;j++) {
+				System.out.print(star[i][j]+" ");
+			}System.out.println();
+		}
+		
+		for(int i = 0 ; i<data.length;i++) {
+			for(int j = 0 ; j<data[i].length;j++) {
+				System.out.print(data[i][j]+" ");
+			}System.out.println();
+		}
+		
+		
+	}//main end
+}// class End

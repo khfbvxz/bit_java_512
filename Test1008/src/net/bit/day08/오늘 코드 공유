@@ -1,0 +1,207 @@
+/// HomeWork2
+###지훈
+package net.bit.day08;
+
+import java.util.Scanner;
+
+public class HomeWork02 {
+   public static void main(String[] args) {
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("1차원배열 캠핑예매 10월08일 금요일");
+
+      boolean[] camp = new boolean[5];
+      int sel = -1, num = 0;
+
+      for (int i = 0; i < camp.length; i++) {
+         if (camp[i] == true) {
+            System.out.println(" " + (i + 1) + "번째 ■캠프장은 예약되어있습니다");
+
+         } else {
+            System.out.println(" " + (i + 1) + "번째 □캠프장은 비어있습니다");
+         }
+      }
+
+      while (true) {
+         sel = -1;
+         while (sel != 1 && sel != 2 && sel != 3 && sel != 9) {
+            System.out.print("\n1.예약  2.퇴실  3.보기  9.종료>>> ");
+            try {
+               sel = Integer.parseInt(scanner.nextLine());
+               if (sel != 1 && sel != 2 && sel != 3 && sel != 9) {
+                  System.out.println("1,2,3,9중 하나를 입력해주세요");
+               }
+            } catch (Exception ex) {
+               System.out.println("1,2,3,9중 하나를 입력해주세요");
+            }
+            ;
+         }
+         if (sel == 9) {
+            System.out.println("캠프장 예약프로그램을 종료합니다");
+            break;
+         }
+
+         switch (sel) {
+         case 1:
+            System.out.print("예약캠프방번호 입력>>>");
+            try {
+               num = Integer.parseInt(scanner.nextLine());
+
+               if (num == 1 || num == 2 || num == 3 || num == 4 || num == 5) {
+
+                  if (camp[num - 1] == true) {
+                     System.out.println("이미 예약된 캠프장입니다.\n");
+                  } else {
+                     camp[num - 1] = true;
+                     System.out.println("정상 예약 완료 되었습니다.\n");
+                  }
+
+                  for (int i = 0; i < camp.length; i++) {
+                     if (camp[i] == true) {
+                        System.out.println(" " + (i + 1) + "번째 ■캠프장은 예약되어있습니다");
+
+                     } else {
+                        System.out.println(" " + (i + 1) + "번째 □캠프장은 비어있습니다");
+                     }
+                  }
+               } else {
+                  System.out.println("캠프장 번호는 1번에서 5번까지 있습니다.");
+               }
+            } catch (Exception ex) {
+               System.out.println("캠프장 번호는 1번에서 5번까지 정수로 입력해주세요.");
+            }
+            break;
+
+         case 2:
+            System.out.print("퇴실캠프방번호 입력>>>");
+            try {
+               num = Integer.parseInt(scanner.nextLine());
+               if (num == 1 || num == 2 || num == 3 || num == 4 || num == 5) {
+
+                  if (camp[num - 1] == true) {
+                     System.out.println("정상 퇴실 되었습니다\n");
+                     camp[num - 1] = false;
+                  } else {
+                     System.out.println("이미 비어있는 방입니다. \n");
+                  }
+
+                  for (int i = 0; i < camp.length; i++) {
+                     if (camp[i] == true) {
+                        System.out.println(" " + (i + 1) + "번째 ■캠프장은 예약되어있습니다");
+
+                     } else {
+                        System.out.println(" " + (i + 1) + "번째 □캠프장은 비어있습니다");
+                     }
+                  }
+               } else {
+                  System.out.println("캠프장 번호는 1번에서 5번까지 있습니다.");
+               }
+            } catch (Exception ex) {
+               System.out.println("캠프장 번호는 1번에서 5번까지 정수로 입력해주세요.");
+            }
+            break;
+         case 3:
+            for (int i = 0; i < camp.length; i++) {
+               if (camp[i] == true) {
+                  System.out.println(" " + (i + 1) + "번째 ■캠프장은 예약되어있습니다");
+
+               } else {
+                  System.out.println(" " + (i + 1) + "번째 □캠프장은 비어있습니다");
+               }
+            }
+            break;
+         }
+
+      } // while end
+
+      scanner.close();
+   }
+}
+
+### 원일
+package net.bit.day08;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+import javax.xml.stream.events.StartDocument;
+public class Homework02 {
+   public static void main(String[] args) {
+      
+      //규칙 함소 메소드 생성하지 마세요. 
+      
+      System.out.println("1차원배열 캠핑예매 10월08일 금요일");
+      Scanner sc = new Scanner(System.in);
+      boolean[] camp = new boolean[5];
+      
+      
+      int sel=9, num=0, num2=0;
+      for(int i=0; i<camp.length; i++) {
+         if(camp[i]==true) {
+            System.out.println(" "+(i+1)+"번째 ■캠프장은 투숙객이 있습니다");
+         }else {
+            System.out.println(" "+(i+1)+"번째 □캠프장은 비어있습니다");
+         }
+      }
+      
+      while(true) {
+      
+            
+         System.out.println("\n1.예약  2.퇴실  3.보기  9.종료>>>");
+         try {
+         sel = Integer.parseInt(sc.nextLine());
+         
+         
+         switch(sel) {
+         
+         case 1 : System.out.print("예약캠프방번호 입력>>>");
+         num = Integer.parseInt(sc.nextLine());
+         if(camp[num-1] == false) {
+            System.out.print(num+"호 캠프방이 예약되었습니다.\n");
+            camp[num-1] = true;
+         }
+         else {
+            System.out.print(num+"호 캠프방은 예약할 수 없습니다. 캠프방은 1~5호까지입니다.\n");
+         }
+         break;
+         
+         case 2 : System.out.print("퇴실캠프방번호 입력>>>");
+         num2 = Integer.parseInt(sc.nextLine());
+         if(camp[num-1] == true) {
+         System.out.print(num2+"호 캠프방에서 퇴실하셨습니다.\n");
+         camp[num2-1] = false;
+         }
+         else{System.out.print(num2+"호 캠프방은 퇴실할 수 없습니다.캠프방은 1~5호까지입니다.\n");}
+         
+         
+         break;
+         
+         case 3 : break;
+         
+         }
+         
+         for(int j=0; j<camp.length; j++) {
+            if(camp[j]==true) {
+               System.out.println(" "+(j+1)+"번째 ■캠프장은 투숙객이 있습니다");
+            }else {
+               System.out.println(" "+(j+1)+"번째 □캠프장은 비어있습니다");
+            }
+            
+         }//for end
+         
+         if(sel==9) {
+            System.out.println("캠프장 예약프로그램 종료합니다.");
+            break;
+            
+            
+         }
+         }
+         catch(Exception ex) {System.out.println("올바른 숫자를 입력하세요.");}
+                 
+         //if~else 다중 if던 switch던 1번 이면 어떤방 예약? 
+      }//while end
+  
+      sc.close();
+
+   }//main end
+   } 
+

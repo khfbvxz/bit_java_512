@@ -1,0 +1,366 @@
+{
+    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+    // 기존 특성에 대한 설명을 보려면 가리킵니다.
+    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            // 1008 빌트 페일 , 컨티뉴 해결중
+            "jdkpath":"C:/Program Files/Java/jdk-16.0.2/bin" ,
+        },
+        {
+            "type": "java",
+            "name": "Launch AAA",
+            "request": "launch",
+            "mainClass": "net.bit.day05.AAA",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch First",
+            "request": "launch",
+            "mainClass": "net.bit.day05.First",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork05",
+            "request": "launch",
+            "mainClass": "net.bit.day05.HomeWork05",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork6",
+            "request": "launch",
+            "mainClass": "net.bit.day05.HomeWork6",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork7",
+            "request": "launch",
+            "mainClass": "net.bit.day05.HomeWork7",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch MinMax",
+            "request": "launch",
+            "mainClass": "net.bit.day05.MinMax",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test01",
+            "request": "launch",
+            "mainClass": "net.bit.day05.Test01",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test02",
+            "request": "launch",
+            "mainClass": "net.bit.day05.Test02",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test03",
+            "request": "launch",
+            "mainClass": "net.bit.day05.Test03",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test04",
+            "request": "launch",
+            "mainClass": "net.bit.day05.Test04",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test05",
+            "request": "launch",
+            "mainClass": "net.bit.day05.Test05",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test06",
+            "request": "launch",
+            "mainClass": "net.bit.day05.Test06",
+            "projectName": "Test1005"
+        },
+        {
+            "type": "java",
+            "name": "Launch AAA(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day06.AAA",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit01",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Bit01",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit02",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Bit02",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit03",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Bit03",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit04sj",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Bit04sj",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit06sj",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Bit06sj",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit07sj",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Bit07sj",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Emp",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Emp",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Emp01",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Emp01",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Emp02",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Emp02",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Emp03jumin",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Emp03jumin",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork01",
+            "request": "launch",
+            "mainClass": "net.bit.day06.HomeWork01",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork05(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day06.HomeWork05",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork08",
+            "request": "launch",
+            "mainClass": "net.bit.day06.HomeWork08",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork09",
+            "request": "launch",
+            "mainClass": "net.bit.day06.HomeWork09",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork0911",
+            "request": "launch",
+            "mainClass": "net.bit.day06.HomeWork0911",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork6(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day06.HomeWork6",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork7(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day06.HomeWork7",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Star01",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Star01",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Try01",
+            "request": "launch",
+            "mainClass": "net.bit.day06.Try01",
+            "projectName": "Test1006"
+        },
+        {
+            "type": "java",
+            "name": "Launch Casting01",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Casting01",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Casting02",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Casting02",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Casting03",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Casting03",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork05(2)",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.HomeWork05",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test01(1)",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Test01",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test02(1)",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Test02",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test04(1)",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Test04",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test05(1)",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Test05",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test06String",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Test06String",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test07char",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Test07char",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test0String",
+            "request": "launch",
+            "mainClass": "net.bit.dat07.Test0String",
+            "projectName": "Test1007"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit01(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day08.Bit01",
+            "projectName": "Test1008"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit02(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day08.Bit02",
+            "projectName": "Test1008"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit03(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day08.Bit03",
+            "projectName": "Test1008"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit04",
+            "request": "launch",
+            "mainClass": "net.bit.day08.Bit04",
+            "projectName": "Test1008"
+        },
+        {
+            "type": "java",
+            "name": "Launch Bit05",
+            "request": "launch",
+            "mainClass": "net.bit.day08.Bit05",
+            "projectName": "Test1008"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork01(1)",
+            "request": "launch",
+            "mainClass": "net.bit.day08.HomeWork01",
+            "projectName": "Test1008"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeWork02",
+            "request": "launch",
+            "mainClass": "net.bit.day08.HomeWork02",
+            "projectName": "Test1008"
+        }
+    ]
+}
