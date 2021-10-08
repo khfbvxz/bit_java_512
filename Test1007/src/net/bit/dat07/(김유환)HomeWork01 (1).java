@@ -1,0 +1,70 @@
+package net.bit.dat07;
+
+import java.util.Scanner;
+
+public class HomeWork01 {
+	public static void main(String[] args) {
+		int a = 19, b = 0, hap = 0, sub = 0, gob = 0, mok = 0, nmg = 0;
+		// 문제 1 b가 0일떄
+		hap = a + b;
+		System.out.printf("%d+%d=%d\n", a, b, hap);
+		sub = a - b;
+		System.out.printf("%d-%d=%d\n", a, b, sub);
+		gob = a * b;
+		System.out.printf("%d*%d=%d\n", a, b, gob);
+		try {
+			mok = a / b;
+			System.out.printf("%d/%d=%d\n", a, b, mok);
+		} catch (ArithmeticException ex) {
+			System.out.println("숫자 0 이로는 나눌 수 없습니다.b를 바꾸세요");
+		}
+		try {
+			nmg = a % b;
+			System.out.printf("%d%%%d=%d\n", a, b, nmg);
+
+		} catch (Exception ex) {
+			System.out.println("0으로 나머지를 구할 수 없습니다. b를 바꾸세요");
+		}
+
+		System.out.println();
+		int dan = 0;
+		Scanner input = new Scanner(System.in);
+		while (true) {
+			try {
+				System.out.print("단 입력>>");
+				dan = Integer.parseInt(input.nextLine()); /// }
+				if(dan>=1)break;
+			} catch (Exception ex) {
+				System.out.println("정수를 입력하세요");
+			}
+		}
+		for (int i = 1; i < 10; i++) {
+			System.out.println(dan + "*" + i + "=" + (dan * i));
+		}
+
+		String[] city = { "제주도", "선유도", "사량도", "여의도", "영종도", "마라도" };
+		System.out.println("보고싶은 시티의 순서를 입력하세요");
+//		int index =0;
+		try {
+//			index = Integer.parseInt(input.nextLine());
+			System.out.println(city[1]);
+			System.out.println(city[2]);
+			System.out.println(city[7]);
+		}
+		catch (Exception ex) {
+			System.out.println("배열의 범위를 벗어났습니다. 배열의 순서는 0 ~ " + (city.length - 1) + "입니다");
+		}
+//		System.out.println(city[index]);
+
+		for (String my : city) {
+			// 1. 해결
+			try {
+				Thread.sleep(300);
+			} catch (Exception ex) {
+			}
+			;
+			System.out.println(my + " ");
+		}
+
+	}// main end
+}// class end
