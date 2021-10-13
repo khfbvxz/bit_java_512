@@ -8,9 +8,11 @@ public class DiamondFor {
 				System.out.print(" ");
 			}
 			for(int j=0; j<2*i+1;j++) {
-				
-				System.out.print("*");
-				
+				if(j==0 || j==(2*i))
+					System.out.print("*");
+				else {
+					System.out.print(" ");
+				}
 			}
 			System.out.println();
 		}
@@ -18,8 +20,12 @@ public class DiamondFor {
 			for(int j =0 ; j<i+1 ; j++) {
 				System.out.print(" ");
 			}
-			for(int j=0 ; j<2*(dan-1)-(2*i)-1;j++) {
-				System.out.print("*");
+			for(int j=0 ; j<2*(dan-i-1)-1;j++) {
+				if(j==0||j==2*(dan-i-1)-2)
+					System.out.print("*");
+				else {
+					System.out.print(" ");
+				}
 			}System.out.println();
 		}
 	}
