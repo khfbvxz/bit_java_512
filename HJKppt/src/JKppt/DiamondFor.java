@@ -11,7 +11,10 @@ public class DiamondFor {
 				if(j==0 || j==(2*i))
 					System.out.print("*");
 				else {
-					System.out.print(" ");
+					if(j%2==1)
+						System.out.print(" ");
+					else
+						System.out.print("$");
 				}
 			}
 			System.out.println();
@@ -24,7 +27,10 @@ public class DiamondFor {
 				if(j==0||j==2*(dan-i-1)-2)
 					System.out.print("*");
 				else {
-					System.out.print(" ");
+					if(j%2==1)
+						System.out.print(" ");
+					else
+						System.out.print("$");
 				}
 			}System.out.println();
 		}
