@@ -55,3 +55,4 @@ public class Pyramid2 {
  */
 	}
 }
+
