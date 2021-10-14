@@ -1,6 +1,6 @@
 package net.bit.day14;
 
-public class Son extends Father{
+public class Son extends Father implements Board,Guest{
 	public static void main(String[] args)  {
 		System.out.println("Son 클래스 main 메소드");
 		Son kim_j = new Son();
@@ -28,6 +28,19 @@ public class Son extends Father{
 		System.out.println("C="+C);
 	}//study end
 	
+	@Override
+	public boolean boardInsert() {
+		return false;
+	}
+	@Override
+	public void boardDelete(int code) {}
+	@Override
+	public void boardList() {}
+	@Override
+	public int getCount() {return 0;}
+	@Override
+	public void guestUpdate() {
 	
+	}//end 
 	
 }//class end
