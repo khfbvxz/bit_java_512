@@ -35,7 +35,7 @@ public class MemberVO {
 		@Override
 		public String toString() {
 			//return  "이름=" + name + ", 나이=" + age +  ", email=" + email +"," ;
-			return  name+"," + age +  "," + email +"," ;
+			return  name+"," + age +  "," + email +",\n" ;
 		}
 	
 }//class END

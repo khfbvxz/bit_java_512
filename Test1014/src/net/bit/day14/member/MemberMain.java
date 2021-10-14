@@ -16,30 +16,32 @@ public class MemberMain {
 		
 		members = new ArrayList<MemberVO>();
 		boolean isStop = false;
+		MemberF fist = new MemberF();
+		fist.file();
 		
-		FileReader fr = null;//
-		BufferedReader bfr = null;//
-		StringTokenizer st = null; //
-		try {
-			fr = new FileReader("C:/Mtest/member.txt");
-			bfr = new BufferedReader(fr);
-			String str = "";
-			String name,email,age;
-			while((str=bfr.readLine()) != null) {
-//				System.out.println(str.length());
-				st = new StringTokenizer(str,",");
-				while(true){
-					name = st.nextToken();
-					age =st.nextToken();
-					email = st.nextToken();
-					int age1 = Integer.parseInt(age);
-//					System.out.println("   name  "+name+"   age  "+age1+"   email  "+email);
-					MemberVO member = new MemberVO(name, age1, email);
-					MemberMain.members.add(member);
-				}
-			}
-		}catch(IOException ex) {ex.printStackTrace();}
-		catch(java.util.NoSuchElementException e) {}
+//		FileReader fr = null;//
+//		BufferedReader bfr = null;//
+//		StringTokenizer st = null; //
+//		try {
+//			fr = new FileReader("C:/Mtest/member.txt");
+//			bfr = new BufferedReader(fr);
+//			String str = "";
+//			String name,email,age;
+//			while((str=bfr.readLine()) != null) {
+////				System.out.println(str.length());
+//				st = new StringTokenizer(str,",");
+//				while(true){
+//					name = st.nextToken();
+//					age =st.nextToken();
+//					email = st.nextToken();
+//					int age1 = Integer.parseInt(age);
+////					System.out.println("   name  "+name+"   age  "+age1+"   email  "+email);
+//					MemberVO member = new MemberVO(name, age1, email);
+//					MemberMain.members.add(member);
+//				}
+//			}
+//		}catch(IOException ex) {ex.printStackTrace();}
+//		catch(java.util.NoSuchElementException e) {}
 		
 		
 		
@@ -69,7 +71,9 @@ public class MemberMain {
 					case "3":
 						action = new DeleteAction();
 						memberService.process(action, sc);
+					
 						break;
+						
 					case "4":
 						action = new UpdateAction();
 						memberService.process(action, sc);

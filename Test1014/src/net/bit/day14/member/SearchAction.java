@@ -27,13 +27,17 @@ public class SearchAction implements Action {
 			String str = "";
 			String name, email, age;
 			int iage = 0;
+			//
+			int c;
+			//
 			boolean searchFlag = false;
 			// System.out.println("내용확인 " + bfr.readLine() );
 			System.out.println("===============================================================\n");
 			while ((str = bfr.readLine()) != null) {
+//			while ((c = bfr.read()) != -1) {
 				st = new StringTokenizer(str, ",");
 				//
-				while (true) {
+				while (st.hasMoreTokens()) {
 					name = st.nextToken();
 					age = st.nextToken();
 					email = st.nextToken();
