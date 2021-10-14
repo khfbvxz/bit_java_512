@@ -67,7 +67,7 @@ public class CustomerManagement {
 					System.out.println("이전 데이터가 존재하지 않습니다.");
 				} else {
 					index--;
-					printCustomerInfo(index);
+					printCustomerData(index);
 				}
 				break;
 			case 'n':
@@ -76,19 +76,19 @@ public class CustomerManagement {
 					System.out.println("다음 데이터가 존재하지 않습니다.");
 				} else {
 					index++;
-					printCustomerInfo(index);
+					printCustomerData(index);
 				}
 				break;
 			case 'c':
 				System.out.println("현재 데이터를 출력합니다.");
 				if ((index >= 0) && (index < count)) {
-					printCustomerData();
+					printCustomerData(index);
 				} else {
 					System.out.println("출력할 데이터가 선택되지 않았습니다.");
 				}
 				break;
 			case 'u':
-				System.out.println("현재 데이터를 추가합니다.");
+				System.out.println("데이터를 수정합니다.");
 				if ((index >= 0) && (index < count)) {
 					System.out.println(index + "번째 데이터를 수정합니다.");
 					updateCustomerData(index);
@@ -98,13 +98,14 @@ public class CustomerManagement {
 				break;
 
 			case 'd':
-				System.out.println("현재 데이터를 삭제합니다.");
+				System.out.println("데이터를 삭제합니다.");
 				break;
 			case 'q':
 				System.out.println("프로그램을 종료합니다.");
 				sc.close(); // Scanner 객체 닫기
 				System.exit(0);// 프로그램 종료
 			default:
+				System.out.println("메뉴를 잘 못 입력했습니다.");
 				throw new IllegalArgumentException("Unexpected value: " + menu.charAt(0));
 			}// swicth end
 		} // while end
@@ -132,13 +133,13 @@ public class CustomerManagement {
 		birthYearList[index] = sc.nextInt();
 	}
 
-	public static void printCustomerData() {
+	public static void printCustomerData(int index) {
 		// index 넣어야 되는가 count넣어야 되는가.
 		System.out.println("=======CUSTOMER INFO========");
-		System.out.printf("이름 : " + nameList[count-1]);
-		System.out.printf("성별 : " + genderList[count-1]);
-		System.out.printf("이메일 : " + emailList[count-1]);
-		System.out.printf("출생년도 : " + birthYearList[count-1]);
+		System.out.printf("이름 : " + nameList[index]);
+		System.out.printf("성별 : " + genderList[index]);
+		System.out.printf("이메일 : " + emailList[index]);
+		System.out.printf("출생년도 : " + birthYearList[index]);
 		System.out.println("============================");
 	}
 
