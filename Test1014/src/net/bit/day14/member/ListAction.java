@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ListAction implements Action {
 	
-	@Override
+	@Override // ¿Á¡§¿« 
 	public void execute(Scanner sc) {
 		ArrayList<MemberVO> members = MemberMain.members;
 		MemberVO member;

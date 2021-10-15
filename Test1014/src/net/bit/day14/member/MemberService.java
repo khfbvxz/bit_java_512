@@ -5,5 +5,6 @@ import java.util.Scanner;
 public class MemberService {
 	void process(Action action,Scanner sc){
 		action.execute(sc);
+		//void execute(Scanner sc); 
 	}
 }//class END

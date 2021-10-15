@@ -8,44 +8,16 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class MemberMain {
-	static ArrayList<MemberVO> members;
+	static ArrayList<MemberVO> members;  // 전역변수 static 선언 OBJ 리스트 
 	
 	public static void main(String[] args) {
-		MemberService memberService = new MemberService();
-		Scanner sc = new Scanner(System.in);
-		
-		members = new ArrayList<MemberVO>();
-		boolean isStop = false;
-		MemberF fist = new MemberF();
-		fist.file();
-		
-//		FileReader fr = null;//
-//		BufferedReader bfr = null;//
-//		StringTokenizer st = null; //
-//		try {
-//			fr = new FileReader("C:/Mtest/member.txt");
-//			bfr = new BufferedReader(fr);
-//			String str = "";
-//			String name,email,age;
-//			while((str=bfr.readLine()) != null) {
-////				System.out.println(str.length());
-//				st = new StringTokenizer(str,",");
-//				while(true){
-//					name = st.nextToken();
-//					age =st.nextToken();
-//					email = st.nextToken();
-//					int age1 = Integer.parseInt(age);
-////					System.out.println("   name  "+name+"   age  "+age1+"   email  "+email);
-//					MemberVO member = new MemberVO(name, age1, email);
-//					MemberMain.members.add(member);
-//				}
-//			}
-//		}catch(IOException ex) {ex.printStackTrace();}
-//		catch(java.util.NoSuchElementException e) {}
-		
-		
-		
-		
+		MemberService memberService = new MemberService();  // 멤버 서비스 객체 생성
+		Scanner sc = new Scanner(System.in); // 스캐너 객체 생성
+		// ArrayList<Integer> String  ArrayList<>(); 
+		members = new ArrayList<MemberVO>(); // 생성 . 
+		boolean isStop = false;  //  반복문 무한루프 돌리는거 중단시킬려고 변수만든거 
+		MemberF fist = new MemberF(); // 내가 추가한거 
+		fist.file(); // 내가추가한거  
 		do {
 			System.out.println( );
 			System.out.println("1.회원 가입");
@@ -62,7 +34,7 @@ public class MemberMain {
 			switch(command){
 					case "1":
 						action = new AddAction();
-						memberService.process(action, sc);
+						memberService.process(action, sc); //좀 쭐일려고 
 						break;
 					case "2":
 						action = new ListAction();
@@ -71,7 +43,6 @@ public class MemberMain {
 					case "3":
 						action = new DeleteAction();
 						memberService.process(action, sc);
-					
 						break;
 						
 					case "4":
@@ -83,6 +54,8 @@ public class MemberMain {
 						memberService.process(action, sc);
 						break;
 					case "9":
+						action = new CRUDAction();
+						memberService.process(action, sc);
 						System.out.println("회원등록프로그램을 종료합니다");
 						isStop = true;
 						break; // 여기 추가함

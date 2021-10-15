@@ -17,7 +17,7 @@ public class AddAction implements Action {
 		String email = sc.next();
 		
 		MemberVO member = new MemberVO(name, age,  email);
-		String msg = member.toString();
+		String msg = member.toString(); //" name,age,email,"
 		addMember1(member);
 		addMember2(msg);
 	}
