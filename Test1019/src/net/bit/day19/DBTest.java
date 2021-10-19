@@ -40,7 +40,14 @@ public class DBTest {
 					ob.dbSelectAll();
 				} else if (sel == 3) {
 					ob.dbDelete();
-				} else {
+				}else if(sel ==4) {
+//					System.out.println("수정을 시작합니다.");
+					ob.dbUpdate();
+				}
+				else if(sel == 5) {
+					ob.dbNameSearch();
+				}
+				else {
 					System.out.println("숫자를 제대로 입력하세요");
 				}
 			}
@@ -49,7 +56,61 @@ public class DBTest {
 			System.out.println("에러이유 " + ex);
 		}
 	}// main end
+	public void dbUpdate() {
+		try {
+			Scanner sc = new Scanner(System.in);
+			while(true) {
+				System.out.print("수정할 코드를 입략하세요 >> ");
+				codeA = Integer.parseInt(sc.nextLine());
+				msg = "select count(*) as cnt from test where code = " + codeA;
+				RS = ST.executeQuery(msg);
+				if (RS.next() == true) {
+					int total = RS.getInt("cnt");
+					if (total == 0) {
+						System.out.println(codeA + " 없는 데이터는 데이터입니다\n ");
+						continue;
+					}
+					break;
+				}
+			} // while 
+			System.out.print("수정할 이름를 입략하세요 >> "); 
+			nameB = sc.nextLine();
+			msg="update test set name= '"+nameB+"' where code = "+codeA;
+			int OK = ST.executeUpdate(msg); // 진짜실행
+//			System.out.println(OK);
+			if (OK>0) {
+				System.out.println(codeA + " 데이터 변경 성공했습니다");
+				this.dbSelectAll();
+			}else {
+				System.out.println(codeA + " 데이터저장 실패했습니다");
+			}
+				
+		} catch (Exception ex) {
+			System.out.println("에러이유 " + ex);
+		}
+	}
+	
+	public void dbNameSearch() {
+		try {
+			Scanner sc = new Scanner(System.in);
+			System.out.print("검색할 이름을 입력하세요");
+			nameB = sc.nextLine();
+			msg = "select * from test where name = '"+nameB+"' order by code asc";
+			RS = ST.executeQuery(msg);
+			this.dbShow(RS);
 
+			int NS = ST.executeUpdate(msg);
+
+			if (NS>0) {
+				System.out.println(nameB+"의 결과 "+NS+"건 검색결과입니다.");
+			}else {
+				System.out.println("이름이 없습니다.");
+			}
+		} catch (Exception ex) {
+			System.out.println("에러이유" + ex);
+		}
+	}// dbNameSearch() end
+	
 	public void dbDelete() { // non -static
 		// 코드 code 필드 삭제
 		try {
@@ -70,12 +131,12 @@ public class DBTest {
 				}
 			}
 			msg = "delete from test where code =" + codeA;
-			RS = ST.executeQuery(msg);
-
+//			RS = ST.executeQuery(msg);
 			int DL = ST.executeUpdate(msg); // 되면 반환 0
-			System.out.println(DL);
-			if (DL == 0) { // code가 없어도 실행됨..
+//			System.out.println(DL);
+			if (DL > 0) { // code가 없어도 실행됨..
 				System.out.println(codeA + "데이터 삭제 성공!");
+				this.dbSelectAll();
 			} else {
 				System.out.println(codeA + "데이터 삭제 실패!");
 			}
@@ -129,20 +190,27 @@ public class DBTest {
 
 			msg = "select code,name,wdate,hit from test order by code asc";
 			RS = ST.executeQuery(msg); // 조회한결과 전체를 RS기억
-			System.out.println("\n코드\t 이름\t 날짜\t조회수");
-			System.out.println("-------------------------------");
-			while (RS.next() == true) {
-				int a = RS.getInt("code");
-				String b = RS.getString("name");
-				Date c = RS.getDate("wdate");
-				int d = RS.getInt("hit");
-				System.out.println(a + "\t" + b + "\t" + "c" + "\t" + d);
-			}
-			System.out.println("-------------------------------");
-			System.out.println();
+
+			this.dbShow(RS);
+
 		} catch (Exception ex) {
 			System.out.println("에러이유 " + ex);
 		}
+	}
+	public void dbShow(ResultSet RS) {
+		System.out.println("\n코드\t 이름\t 날짜\t조회수");
+		System.out.println("-------------------------------");
+		try {
+		while (RS.next() == true) {
+			int a = RS.getInt("code");
+			String b = RS.getString("name");
+			Date c = RS.getDate("wdate");
+			int d = RS.getInt("hit");
+			System.out.println(a + "\t" + b + "\t" + "c" + "\t" + d);
+		}}
+		catch(Exception ex) {System.out.println("에러이유 " + ex);}
+		System.out.println("-------------------------------");
+		System.out.println();
 	}
 }
 // class END
