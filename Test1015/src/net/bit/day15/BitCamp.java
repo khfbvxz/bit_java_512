@@ -1,10 +1,27 @@
 package net.bit.day15;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class BitCamp {
 	private String name="자바의정석";
 	public static void main(String[] args) {
-		BitCamp bc = new BitCamp();
-		bc.note();
+		Father kim = new Father();
+		int a = kim.bank("농협");
+		int b = kim.bank(34);
+//		System.out.println(a+"   "+b);
+		
+//		Calendar cal = null;
+//		Calendar cal = new Calendar();//에러
+		Calendar gcal = new GregorianCalendar();
+		Calendar cal = Calendar.getInstance();
+//		Mother mm = new Mother(); // 에러 추상클래스여서
+		Mother.house(); // 얘는 static이여서 가능 
+		
+		
+		
+//		BitCamp bc = new BitCamp();
+//		bc.note();
 		// static 키워드가 있는 곳에서 this 사용 불가 
 	}// main end
 	
