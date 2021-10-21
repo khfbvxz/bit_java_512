@@ -46,10 +46,10 @@ public class DBTest {
 //					ob.dbUpdate();
 					ob.dbUpdate2();
 				} else if (sel == 5) {
-//					System.out.print("\n이름검색 키워들 입력하세요 ");
-//					String find = sc.nextLine();
-//					ob.dbNameSearch2(find);
-					ob.dbNameSearch();
+					System.out.print("\n이름검색 키워들 입력하세요 ");
+					String find = sc.nextLine();
+					ob.dbNameSearch2(find);
+//					ob.dbNameSearch();
 				} else {
 					System.out.println("숫자를 제대로 입력하세요");
 				}
@@ -129,7 +129,7 @@ public class DBTest {
 			RS = ST.executeQuery(msg);
 			if (RS.next() == true) { Gtotal = RS.getInt("cnt");}
 			if (Gtotal == 0) {
-				System.out.println(codeA + " 없는 데이터는 데이터입니다\n ");
+				System.out.println(codeA + " 코드데이터가 존재하지 않습니다. \n수정처리데이터가 불가합니다.\n ");
 				return;
 			}
 			System.out.print(codeA +" 의 수정할 이름를 입력하세요>>");
@@ -143,8 +143,7 @@ public class DBTest {
 				this.dbSelectAll();
 			}else {
 				System.out.println(codeA + " 데이터저장 실패했습니다");
-			}
-			
+			}	
 		} catch (Exception ex) {
 			System.out.println("수정갱신작업 실패 에러  " + ex.toString());
 		}
@@ -302,7 +301,7 @@ public class DBTest {
 
 			System.out.print("이름name입력 >>> ");
 			nameB = sc.nextLine();
-
+			hitD = 32;
 			msg = "insert into test(code,name,wdate,hit) values(" + codeA + ",'" + nameB + "', sysdate," + hitD + ")";
 			int OK = ST.executeUpdate(msg); // 진짜실행
 			if (OK > 0) {
