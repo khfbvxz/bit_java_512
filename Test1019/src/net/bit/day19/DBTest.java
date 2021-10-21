@@ -29,6 +29,7 @@ public class DBTest {
 			ob.dbSelectAll();
 //			ob.dbInsert();
 			while (true) {
+				
 				System.out.print("1.신규등록  2.전체 출력  3.삭제 4.수정  5.이름검색  9.종료 >>>");
 				int sel = Integer.parseInt(sc.nextLine());
 
@@ -42,7 +43,8 @@ public class DBTest {
 				} else if (sel == 3) {
 					ob.dbDelete();
 				} else if (sel == 4) {
-					ob.dbUpdate();
+//					ob.dbUpdate();
+					ob.dbUpdate2();
 				} else if (sel == 5) {
 //					System.out.print("\n이름검색 키워들 입력하세요 ");
 //					String find = sc.nextLine();
@@ -119,6 +121,35 @@ public class DBTest {
 		return Gtotal;
 	}
 	
+	public void dbUpdate2() {
+		try {
+			System.out.print("수정할 코드를 입력하세요>>");
+			codeA = Integer.parseInt(sc.nextLine());
+			msg = "select count(*) as cnt from test where code = " + codeA;
+			RS = ST.executeQuery(msg);
+			if (RS.next() == true) { Gtotal = RS.getInt("cnt");}
+			if (Gtotal == 0) {
+				System.out.println(codeA + " 없는 데이터는 데이터입니다\n ");
+				return;
+			}
+			System.out.print(codeA +" 의 수정할 이름를 입력하세요>>");
+			nameB = sc.nextLine();
+			System.out.print(codeA +" 의 수정할 조회수를 입력하세요>>");
+			hitD = sc.nextInt();
+			msg = "update test set name = '"+nameB+"' , wdate = sysdate , hit="+hitD +"where code = "+codeA;
+			int up = ST.executeUpdate(msg);
+			if(up>0) {
+				System.out.println(codeA + " 데이터 변경 성공했습니다");
+				this.dbSelectAll();
+			}else {
+				System.out.println(codeA + " 데이터저장 실패했습니다");
+			}
+			
+		} catch (Exception ex) {
+			System.out.println("수정갱신작업 실패 에러  " + ex.toString());
+		}
+	}
+	
 	public void dbUpdate() {
 		try {
 			Scanner sc = new Scanner(System.in);
@@ -165,7 +196,7 @@ public class DBTest {
 					int cnt = RS.getInt("cnt");
 					if (cnt == 0) {
 						System.out.println("검색할 이름이 존재하지 않습니다.");
-						return;
+						return;  // 리턴쓰면 break; 쓸 필요 없음 
 					}
 				}
 				break;
