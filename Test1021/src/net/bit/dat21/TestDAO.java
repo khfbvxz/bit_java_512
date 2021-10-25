@@ -202,7 +202,6 @@ public class TestDAO implements Test {
 					break;
 				}
 			} // while end
-
 			System.out.print("이름name입력 >>> ");
 			nameB = sc.nextLine();
 			System.out.print("조회 hit 입력 >>> ");
@@ -223,10 +222,7 @@ public class TestDAO implements Test {
 				System.out.println(codeA + " 데이터저장 성공했습니다");
 				this.dbSelectAll();
 			}
-		} catch (Exception ex) {
-			System.out.println("에러이유 " + ex);
-		}
-		
+		} catch (Exception ex) {System.out.println("에러이유 " + ex);}
 	}// dbInsert() end
 
 
