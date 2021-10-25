@@ -9,11 +9,11 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class HomeDAO implements DAOinterface {
-	private Connection CN = null; // DB서버주소및 id,pwd 정보를 CN기억하고 명령어생성할때 참조
-	private Statement ST = null; // 정적인명령어
-	private PreparedStatement PST = null; // 동적인 명령어 2021-10-21-목요일
-	private ResultSet RS = null; // 조회한결과기억 RS = ST.executeQuery("select"); while(RS.next()){ }
-	private String msg, msg2, aptNameA, aptloc, appname, appbrand, purchase;
+	private Connection CN = null; 
+	private Statement ST = null; 
+	private PreparedStatement PST = null; 
+	private ResultSet RS = null; 
+	private String msg, msg2, aptNameA, aptloc, appname, appbrand, purchase, change;
 	private int Gtotal, aptno, roomno, energy, power, showno, ck;
 	Scanner sc = new Scanner(System.in);
 
@@ -29,12 +29,38 @@ public class HomeDAO implements DAOinterface {
 	}// 생성자 end
 
 	@Override
-	public void appAllShow() {
+	public void powerTotal() {
 		try {
-//			msg = "select count(*) as cnt from appliances";
-//			RS = ST.executeQuery(msg);
-//			RS.next();
-//			Gtotal = RS.getInt("cnt");
+//			while (true) {
+//				System.out.print("아파트이름입력>>");
+//				aptNameA = sc.nextLine();
+//
+//				aptNameCheck(aptNameA);
+//				if (ck == 1) {
+//					return;
+//				}
+//				break;
+//			}
+			System.out.println("-----아파트 호수 별 하루 전력 사용량-----");
+			System.out.println("아파트명\t 호\t 총 사용 전력량");
+			
+			msg = "select t.aptname, p.roomno, SUM(p.powerofday) from APPLIANCES p LEFT join apartment t on p.aptno = t.aptno group by  p.roomno ,t.aptname order by SUM(p.powerofday) desc";
+			RS = ST.executeQuery(msg);
+			while(RS.next() == true) {
+				
+				String a = RS.getString("t.aptname");
+				System.out.println(a);
+				int rn = RS.getInt("p.roomno");
+				int s = RS.getInt("sum(p.powerofday)");
+				System.out.println(a +"\t "+ rn + "\t "+s);
+			}
+		} catch (Exception ex) {
+			System.out.println("에러이유 " + ex);
+		}
+	}
+
+	public void appAllShow() {
+		try {		
 			System.out.println("\t\t전체레코드갯수 : " + appCountAll());
 
 			System.out.println("아파트명\t\t 호\t 가전제품\t 브랜드\t 구매년도\t ");
@@ -175,13 +201,11 @@ public class HomeDAO implements DAOinterface {
 
 	@Override
 	public void appDelete() {
+		int count =1;
 		try {
-//			System.out.print("아파트 명 입력 >> ");
-//			aptNameA = sc.nextLine();
 			while (true) {
 				System.out.print("(삭제)아파트 이름 입력>>");
 				aptNameA = sc.nextLine();
-//				int a = 
 				aptNameCheck(aptNameA);
 				if (ck == 1) {
 					return;
@@ -200,8 +224,16 @@ public class HomeDAO implements DAOinterface {
 				System.out.println(appname + "은 등록되어 있지 않습니다.");
 				return;
 			} else if (Gtotal > 1) {
-				System.out.print("삭제할 가전제품의 브랜드를 입력하세요>> ");
+				msg = "select appbrand from APPLIANCES where roomno = "+roomno+" and aptno="+aptno+" and appname='"+appname+"'";
+				RS=ST.executeQuery(msg);
+				while(RS.next()==true) {
+					String o = RS.getString("appbrand");
+					System.out.print(count + "번째 브랜드 : " + o + "  ");
+					count++;
+				}
+				System.out.print("\n삭제할 가전제품의 브랜드를 입력하세요>> ");
 				appbrand = sc.nextLine();
+			
 				msg = "delete from APPLIANCES where roomno = ? and aptno = ? and appname = ? and appbrand =? ";
 				PST = CN.prepareStatement(msg);
 				PST.setInt(1, roomno);
@@ -222,14 +254,88 @@ public class HomeDAO implements DAOinterface {
 			}
 
 		} catch (Exception ex) {
-			// TODO: handle exception
+			System.out.println("에러이유 " + ex);
 		}
 
 	}
 
 	@Override
 	public void appUpdate() {
-		// TODO Auto-generated method stub
+		int count = 1;
+		try {
+			while (true) {
+				System.out.print("(변경)아파트 이름 입력>>");
+				aptNameA = sc.nextLine();
+				aptNameCheck(aptNameA);
+				if (ck == 1) {
+					return;
+				}
+				break;
+			}
+			System.out.print("변경할 가전제품을 입력하세요>> ");
+			appname = sc.nextLine();
+			msg = "select count(*) cnt from APPLIANCES where roomno =" + roomno + " and aptno = " + aptno
+					+ "and appName ='" + appname + "'";
+			RS = ST.executeQuery(msg);
+			if (RS.next() == true) {
+				Gtotal = RS.getInt("cnt");
+			}
+			if (Gtotal == 0) {
+				System.out.println(appname + "은 등록되어 있지 않습니다.");
+				return;
+			}else if (Gtotal > 1) { // TV가 두개 일때 
+				msg = "select appbrand from APPLIANCES where roomno = "+roomno+" and aptno="+aptno+" and appname='"+appname+"'";
+				RS=ST.executeQuery(msg);
+				while(RS.next()==true) {
+					String o = RS.getString("appbrand");
+					System.out.print(count + "번째 브랜드 : " + o + "  ");
+					count++;
+				}
+				System.out.print("변경할 가전제품의 브랜드를 입력하세요>> ");
+				appbrand = sc.nextLine();
+				System.out.print("변경된 가전제품의 브랜드를 입력하세요>> ");
+				change = sc.nextLine();
+				System.out.print("에너지효율등급 입력 >> ");
+				energy = Integer.parseInt(sc.nextLine());
+				System.out.print("평균 하루사용전력량 입력 >>");
+				power = Integer.parseInt(sc.nextLine());
+				System.out.print("구매년도 입력 >> ");
+				purchase = sc.nextLine();
+				msg = "update APPLIANCES set appbrand = '"+change+"' , purchaseyear ='"+purchase+"' ,  energygrade = "+energy+" ,powerofday = "+power+" where roomno = "+roomno+" and aptno= "+aptno+" and appname = '"+appname+"' and appbrand = '"+appbrand+"'";
+
+				ST.executeUpdate(msg);
+				System.out.println(aptNameA + "아파트 " + roomno + "호 의 " + appname + "의 기록이 변경되었습니다. ");
+				this.appShow();
+			} else {
+				System.out.print("변경된 가전제품의 브랜드를 입력하세요>> ");
+				String change = sc.nextLine();
+				System.out.print("에너지효율등급 입력 >> ");
+				energy = Integer.parseInt(sc.nextLine());
+				System.out.print("평균 하루사용전력량 입력 >>");
+				power = Integer.parseInt(sc.nextLine());
+				System.out.print("구매년도 입력 >> ");
+				purchase = sc.nextLine();
+				
+				msg = "update APPLIANCES set appbrand = ? , purchaseyear =? ,  energygrade = ? ,powerofday = ?  "+
+						"where roomno = ? and aptno= ? and appname = ? ";
+				PST = CN.prepareStatement(msg);
+				PST.setString(1, change);
+				PST.setString(2, purchase);
+				PST.setInt(3, energy);
+				PST.setInt(4, power);
+				PST.setInt(5, roomno);
+				PST.setInt(6, aptno);
+				PST.setString(7, appname);
+				int OK = PST.executeUpdate();// 진짜 저장 처리
+				if (OK > 0) {
+					System.out.println(aptNameA + "아파트 " + roomno + "호 의 " + appname + "의 기록이 변경되었습니다. ");
+					this.appShow();
+				}
+				
+			}
+		} catch (Exception ex) {
+			System.out.println("에러이유 " + ex);
+		}
 
 	}
 
@@ -252,11 +358,10 @@ public class HomeDAO implements DAOinterface {
 		try {
 			ck=0;
 			while(true) {
-				System.out.print("검색할 아파트 명을 입력하세요");
+				System.out.print("검색할 아파트 명을 입력하세요 >> ");
 				aptNameA = sc.nextLine();
 				aptNameCheck(aptNameA);
 				if (ck == 1) {
-//					System.out.println(ck);
 					return;
 				}
 				else if(ck==0) {this.appShow();}
@@ -277,7 +382,7 @@ public class HomeDAO implements DAOinterface {
 			System.out.println("------------------------------------------");
 			System.out.println("가전제품명\t 브랜드 \t 구매년도");
 			msg = "select appname, appbrand, PURCHASEYEAR from APPLIANCES where roomno= " + roomno + " and aptno = "
-					+ aptno;
+					+ aptno+ "order by appname ";
 			RS = ST.executeQuery(msg);
 			while (RS.next() == true) {
 				String a = RS.getString("appname");
