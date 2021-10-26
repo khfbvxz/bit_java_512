@@ -12,7 +12,7 @@ public class HomeMain {
 			dao.appAllShow();  // 얘는 나중에 
 			
 			while (true) {
-				System.out.print("1.가전제품신규등록  2.전체 출력  3.가전제품변경 4.가전제품삭제  5.아파트호수검색 6.아파트호수별 전력사용량 0.종료 >>>");
+				System.out.print("1.가전제품신규등록  2.전체 출력  3.가전제품변경 4.가전제품삭제  5.아파트호수검색 6.아파트호수별 전력사용량  0.종료 >>>");
 				int sel = Integer.parseInt(sc.nextLine());
 				if(sel==0) {System.out.println("프로그램을 종료합니다."); System.exit(1);}
 				else if (sel == 1) {
@@ -27,14 +27,7 @@ public class HomeMain {
 					dao.hoSearch();
 				}else if (sel == 6) {
 					dao.powerTotal();
-				}else if (sel == 7) {
-					
-				}else if (sel == 8) {
-					
-				}else if (sel == 9) {
-					break;
-				}
-				else {
+				}else {
 					System.out.println("MyHome프로그램을 종료합니다.");
 					System.exit(1);
 				}

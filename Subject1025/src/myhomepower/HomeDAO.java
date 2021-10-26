@@ -31,29 +31,23 @@ public class HomeDAO implements DAOinterface {
 	@Override
 	public void powerTotal() {
 		try {
-//			while (true) {
-//				System.out.print("아파트이름입력>>");
-//				aptNameA = sc.nextLine();
-//
-//				aptNameCheck(aptNameA);
-//				if (ck == 1) {
-//					return;
-//				}
-//				break;
-//			}
-			System.out.println("-----아파트 호수 별 하루 전력 사용량-----");
-			System.out.println("아파트명\t 호\t 총 사용 전력량");
-			
-			msg = "select t.aptname, p.roomno, SUM(p.powerofday) from APPLIANCES p LEFT join apartment t on p.aptno = t.aptno group by  p.roomno ,t.aptname order by SUM(p.powerofday) desc";
-			RS = ST.executeQuery(msg);
-			while(RS.next() == true) {
-				
-				String a = RS.getString("t.aptname");
-				System.out.println(a);
-				int rn = RS.getInt("p.roomno");
-				int s = RS.getInt("sum(p.powerofday)");
-				System.out.println(a +"\t "+ rn + "\t "+s);
+			while (true) {
+				System.out.print("아파트이름입력>>");
+				aptNameA = sc.nextLine();
+
+				aptNameCheck(aptNameA);
+				if (ck == 1) {
+					return;
+				}
+				break;
 			}
+						
+			msg = "select sum(powerofday) from APPLIANCES  where roomno = "+roomno+" and aptno="+aptno;
+			RS = ST.executeQuery(msg);
+			RS.next();
+			int a = RS.getInt("sum(powerofday)");
+			System.out.println(aptNameA+"아파트 "+roomno+"호 의 하루 총 사용전력량은 : "+ a);
+			System.out.println();
 		} catch (Exception ex) {
 			System.out.println("에러이유 " + ex);
 		}
