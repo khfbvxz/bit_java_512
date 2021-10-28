@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+
+<style>
+h1 {
+	color: #0A0776;
+	text-align: center;
+}
+
+table {
+	margin: 0 auto;
+}
+
+#cap {
+	text-align: center;
+	font-weight: bold;
+	padding: 0px 10px;
+}
+
+td[colspan="2"] {
+	font-weight: bold;
+	font-size: 1.25em;
+	color: yellow;
+	background-color: #0A0776;
+	text-align: center;
+}
+
+input[type="button"] {
+	width: 150px;
+}
+
+#foot {
+	background-color: #9C99E7;
+	text-align: center;
+}
+</style>
+
+<body>
+	<h1>◎ 회 원 가 입 ◎</h1>
+
+	<form action="index.html" method="post">
+		<table border="1">
+			<tr>
+				<td colspan="2">◈ 기본정보 ◈</td>
+			</tr>
+			<tr>
+				<td id="cap">회원아이디</td>
+				<td><input type="text" size="20"> <input type="button"
+					value="ID중복확인"> 영문소문자/숫자조합3~8자</td>
+			</tr>
+			<tr>
+				<td id="cap">비밀번호</td>
+				<td><input type="text" size="20"> 영문소문자/숫자조합3~8자</td>
+			</tr>
+			<tr>
+				<td id="cap">비밀번호확인</td>
+				<td><input type="text" size="20"> 비밀번호확인</td>
+			</tr>
+			<tr>
+				<td id="cap">E-Mail</td>
+				<td><input type="email" size="10"> @ <select>
+						<option value="naver">naver.com</option>
+						<option value="daum">daum.net</option>
+						<option value="google">google.com</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="2">◈ 개인신상정보 ◈</td>
+			</tr>
+			<tr>
+				<td id="cap">한글이름</td>
+				<td><input type="text" size="20"> 성과 이름을 붙여주세요 (예)홍길동</td>
+			</tr>
+			<tr>
+				<td id="cap">주민등록번호</td>
+				<td><input type="text" size="10"> - <input type="text"
+					size="10"> <input type="button" value="주민번호체크">
+					비밀번호 분실시 이용됩니다.</td>
+			</tr>
+			<tr>
+				<td id="cap">실제생년월일</td>
+				<td><label><input type="radio" name="chk" value="p"
+						checked>양력</label> <label><input type="radio" name="chk"
+						value="m">음력</label> <input type="text" size="10">
+					예)2000/05/22</td>
+			</tr>
+			<tr>
+				<td id="cap">전화번호</td>
+				<td><input type="text" list="homephone" size="6"> <datalist
+						id="homephone">
+						<option value="02" />
+						<option value="031" />
+						<option value="032" />
+						<option value="055" />
+						<option value="070" />
+					</datalist> - <input type="text" size="4"> - <input type="text"
+					size="4"> 예) 051-000-0000</td>
+			</tr>
+			<tr>
+				<td id="cap">휴대전화번호</td>
+				<td><input type="text" list="phone" size="6"> <datalist
+						id="phone">
+						<option value="010" />
+						<option value="011" />
+						<option value="017" />
+					</datalist> - <input type="text" size="4"> - <input type="text"
+					size="4"> 예) 011-000-0000</td>
+			</tr>
+			<tr>
+				<td id="cap">우편번호</td>
+				<td><input type="text" size="4"> - <input type="text"
+					size="4"> <input type="button" value="우편번호검색"></td>
+			</tr>
+			<tr>
+				<td id="cap">주소</td>
+				<td><input type="text" size="70"></td>
+			</tr>
+			<tr>
+				<td colspan="2" id="foot"><input type="submit" value="확인">
+					<input type="submit" value="취소"></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
