@@ -1,6 +1,6 @@
 // console.log("hello");
 // document.cookie = "safeCookie1=foo; SameSite=Lax"; document.cookie = "safeCookie2=foo"; document.cookie = "crossCookie=bar; SameSite=None; Secure";
-document.cookie = "user=John"; 
+// document.cookie = "user=John"; 
 
 const container = document.querySelector(".image-container")
 const startButton = document.querySelector(".start-button")
@@ -16,15 +16,16 @@ const dragged = {
   el : null,
   class : null,
   index : null, 
-  
 }
 let isPlaying = false ; 
 let timeInterval = null;
 let time = 0;
 
+// setGame();
 function checkStatus(){
   const currentList = [...container.children];
   const unMatchedList = currentList.filter((child,index) => Number(child.getAttribute("data-index")) !== index)
+  console.log(unMatchedList);
 
   if(unMatchedList.length === 0){
     //game 끝
@@ -40,7 +41,7 @@ function setGame(){
   container.innerHTML="";
   gameText.style.display = "none";
   timeInterval = setInterval(() => {
-    playTime.innerTxet = time;
+    playTime.innerHTML = time;
     time++;
   }, 1000)
 
@@ -50,7 +51,7 @@ function setGame(){
   setTimeout(()=>{
     container.innerHTML="";
     shuffle(tiles).forEach(tile => container.appendChild(tile))
-  }, 5000)
+  }, 4000)
   
 }
 
@@ -84,12 +85,13 @@ function shuffle(array){
 
 //event 
 container.addEventListener('dragstart' , e => {
-  if(isPlaying) return;
+  if(!isPlaying) return;
   const obj = e.target
   // console.log(e)  // f12 target
   // 다른 곳에 놓았을 떄 이미지 바꾸어 주는 
   dragged.el = obj;
   dragged.class = obj.className;
+  console.log(typeof e.target.parentNode.children)
   dragged.index = [...obj.parentNode.children].indexOf(obj);
 })
 
@@ -97,10 +99,11 @@ container.addEventListener('dragover', e => {
   e.preventDefault()// 이벤트가 발생하지 않도록 
 })
 container.addEventListener('drop', e => {
-  if(isPlaying) return;
+  if(!isPlaying) return;
   // console.log('dropped')
   const obj = e.target;
   if(obj.className !== dragged.class){
+    console.log("drop")
     let originPlace;
     let isLast = false;
     // console.log("3")
