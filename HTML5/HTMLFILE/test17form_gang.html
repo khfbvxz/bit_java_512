@@ -67,7 +67,22 @@
           return;
         }
       }
-    }// end
+    }// myCheck end
+    function codeNumber(){
+      var code = myform.user_code.value;
+      var code_size = document.myform.user_code.value.length; // 입력란 문자열길이
+      for(i=0 ; i<code_size ; i++ ){
+        //java에서 주민번호 성별구별할때 char gender = charAt(int)
+        if(code.charAt(i)<'0' || code.charAt(i)>'9'){
+          alert("숫자를 입력하셔야 합니다.");
+          //myform.user_code.value="";  // 입력내용 전체 삭제
+          //myform.user_code.value = code.substring(0,i);
+          myform.user_code.value = code.subst(0,i);
+          myform.user_code.focus();
+        }//if end
+      }//for end
+      
+    }// codeNumber end
 
 
   </script>
@@ -81,12 +96,12 @@
         <legend>LG캠프 지원서</legend>
         <div>
           <label>코드</label>
-          <input type="text" maxlength="4" name="user_code" id="user_code" value="7789" />
-          <span id="code_check"></span>
+          <input type="text" maxlength="4" name="user_code" id="user_code" onKeyUp=" codeNumber();"/>
+          <span id="code_ch"></span>
         </div>
         <div>
           <label>제목</label>
-          <input type="text" name="user_title" id="user_title" value="summer" />
+          <input type="text" name="user_title" id="user_title" value="summer" /><span id="code_ch"></span>
         </div>
         <div>
           <label>메일</label>
