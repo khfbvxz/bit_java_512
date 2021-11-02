@@ -48,12 +48,13 @@
 	<h2>guestWrite.jsp</h2>
 	<form name="myform" action="guestSave.jsp" method="POST"
 		onsubmit="return check();">
-		제목 : <input type="text" id="title" name="title"> <br> 가격
-		: <input type="text" id="pay" name="pay" onKeyup="codeNumber();" /> <span
-			id="num_ch"></span> <br> <input type="submit" value="데이터저장">
+		제목 : <input type="text" id="title" name="title"> <br> 
+		가격 : <input type="text" id="pay" name="pay" onKeyup="codeNumber();" /> <span id="num_ch"></span> <br> 
+		<input type="submit" value="데이터저장">
 		<input type="reset" value="입력취소">
 	</form>
 	<p>
-		<a href="gugudan.jsp">[gugudan]</a> <a href="guestWrite.jsp">[Write]</a>
+		<a href="gugudan.jsp">[gugudan]</a> 
+		<a href="guestWrite.jsp">[Write]</a>
 </body>
 </html>

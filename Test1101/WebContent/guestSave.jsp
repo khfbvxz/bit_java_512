@@ -7,7 +7,7 @@
 <title></title>
 <style>
 * {
-	font-size: 20pt;
+	font-size: 20pt; font-wegiht = bold;
 }
 </style>
 </head>
@@ -21,15 +21,22 @@
 	<%
 	// guestSave.jsp 단독실행하면 에러 발생 합니다. 
 	out.println("<h2>guestSave.jsp</h2>");
-	try {
-		String a = request.getParameter("title");
-		int b = Integer.parseInt(request.getParameter("pay"));
-		out.println("넘어온 제목 = " + a + "<br>");
-		out.println("넘어온 금액  = " + b + "<br>");
-	} catch (Exception e) {
-		out.println("최악을 피핮");
-	}
+	//try {
+		int dcode = Integer.parseInt(request.getParameter("code"));
+		String dtitle = request.getParameter("title");
+		int dpay = Integer.parseInt(request.getParameter("pay"));
+		String demail = request.getParameter("email");
+		out.println("넘어온 코드 = " + dcode + "<br>");
+		out.println("넘어온 제목  = " + dtitle + "<br>");
+		out.println("넘어온 금액  = " + dpay + "<br>");
+		out.println("넘어온 메일  = " + demail + "<br>");
+	//} 
+	//catch (Exception e) {}
 	%>
+	코드출력 : <%=dcode %>
+	제목출력 : <%=dtitle %>
+	금액출력 : <%=dpay %>
+	이메일출력 : <%=demail %>
 	<p>
 		<a href="gugudan.jsp">[gugudan]</a>
 		<a href="guestWrite.jsp">[Write]</a>

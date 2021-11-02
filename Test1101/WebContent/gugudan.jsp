@@ -8,6 +8,9 @@
 <title></title>
 <style type="text/css">
 	*{ font-size : 20pt}
+	a{ font-size : 14pt; text-decoration: none; font-weghit:bold; color:blue;}
+	a : hover{ font-size : 14pt; text-decoration: underline; color:green;}
+	#email_ch{color : red;font-size:12pt;}
 </style>
 </head>
 <body>
