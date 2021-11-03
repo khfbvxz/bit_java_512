@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<%@ include file="./ssi.jsp" %>
+<%@ include file="ssi.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +43,7 @@
 		PST.executeUpdate(); // 진짜 저장 처리 
 		System.out.println("콘솔출력 guest테이블 저장성공했습니다. 11/03");
 		out.println("웹브라우저 출력 guest테이블 저장성공했습니다. 11/03");
-		//response.sendRedirect("guestList.jsp"); //문서이동 
+		response.sendRedirect("guestList.jsp"); //문서이동 
 	}catch(Exception ex){  }
 	%>
 	<br>

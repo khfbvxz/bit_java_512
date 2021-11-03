@@ -18,8 +18,6 @@
 	</style>
 </head>
 <body>
-	<h2>server side include ssi.jsp</h2>
-	
 	<%! 
 	// server  side include . jsp 문서
 		Connection CN;
@@ -28,7 +26,7 @@
 		ResultSet RS;
 		
 		int Grn,Grow, Gsabun, Gcode, Gpay, Ghit, Gtotal, GStotal;
-		String Gname, Gtitle, Gemail, Gmemo, GID, GPWD;
+		String  Gtitle, Gemail, Gmemo, GID, GPWD;
 		java.util.Date GDate, Gwdate;
 		String Gmsg, msg , Gdata;
 		int Rrn, Rnum, Rsabun, Rcode;

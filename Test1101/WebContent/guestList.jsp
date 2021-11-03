@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<%@ include file="./ssi.jsp" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Date" %>
+<%@ include file="ssi.jsp" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -22,11 +16,23 @@
 <body>
 
 	
-<h2>guestList.jsp전체출력</h2>	
+<h2>guestList.jsp전체출력</h2>
+<%
+try{
+	msg = "select count(*) as cnt from guest ";
+	ST = CN.createStatement(); 
+    RS = ST.executeQuery(msg);
+    if(RS.next()==true){
+    	Gtotal = RS.getInt("cnt");
+    }
+}catch(Exception ex){
+	System.out.println("전체레코드출력에러 11월03일 " + ex.toString());
+}
+%>	
 <table border="1" width="900" cellspacing="0">
 <tr>
-   <td colspan=4 align="center">
-   		<img src="images/bar.gif" height="30"> 
+   <td colspan=4 align="right">
+   		총 레코드 갯수 : <%= Gtotal %> 
    </td>
 </tr>
 <tr bgcolor="yellow">

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-
+<%@ include file="ssi.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@
                return; 
            } 
 	       
-	      window.open("openID.jsp?idx="+dcode, "bb", "width=500,height=200,left=700,top=200");
+	      window.open("openID.jsp?userid="+dcode, "bb", "width=500,height=200,left=700,top=200");
 	      Gflag=true;
 	      //openID.jsp
 	      //window내장개체는 생략가능 
@@ -113,11 +113,12 @@
 <body>
 	<h2> guestWrite.jsp </h2>
 	<form name="myform" method="get" action="guestSave.jsp">
-	    코드: <input type="text" name="code"   size="8"> 
+	    코드: <input type="text" id="code" name="code"   size="8"> 
 	         <input type="button"  onclick="idCheck();"  value="id중복체크"  > <span></span> <br>
 	    제목: <input type="text" name="title" value="note"> <span></span> <br>
 	    급여: <input type="text" name="pay" value="74"> <span></span> <br>
 	    메일: <input type="text" name="email" id="email"  value="bit@LG.com"> <span id="email_ch"></span> <br>
+	    <input type="button" onclick="nullcheck();" value="버튼저장">
 	    <input type="reset" value="입력취소">
 	    <input type="submit" value="서브밋저장">
 	</form>

@@ -38,7 +38,7 @@ try{
    	  </td>
    </tr>
   	<tr>
-  		<td width="250"  rowspan="5" align="center" >
+  		<td width="250"  rowspan="4" align="center" >
   		  <img src="images/bbb.gif" width="350" height="200"> 
   		</td> 
   		<td> 코드:  <%= Gcode %>  </td>
@@ -53,12 +53,12 @@ try{
   	   <td> 메일: <%= Gemail %>  </td>
   	</tr>
   	
-  	<tr>
-  	   <td> 
+  	<tr align="center">
+  	   <td colspan="2"> 
   			<a href="guestList.jsp">[guestList]</a>
-  			<a href="#">[삭제]</a>
+  			<a href="guestDeleteSave.jsp?idx=<%= Gcode %>">[삭제]</a>
   			<a href="guestWrite.jsp">[등록화면]</a>
-  			<a href="#">[guest수정]</a>
+  			<a href="guestEdit.jsp?idx=<%= Gcode %>">[수정]</a>
   	   </td>
   	</tr>
  </table>
