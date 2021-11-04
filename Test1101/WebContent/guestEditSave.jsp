@@ -15,7 +15,6 @@
 <body>
 
 <!-- guestEditSave.jsp단독실행하면 에러발생 -->
-<h2>guestEditSave.jsp</h2>
 <%
 try{
   dcode = Integer.parseInt(request.getParameter("code"));
@@ -23,26 +22,38 @@ try{
   dpay = Integer.parseInt(request.getParameter("pay"));
   demail = request.getParameter("email");
   
-  System.out.println("수정 코드 = " + dcode +"<br>"); //콘솔창출력
-  System.out.println("수정 제목 = " + dtitle +"<br>");
-  System.out.println("수정 급여 = " + dpay +"<br>");
-  System.out.println("수정 메일 = " + demail +"<br>");
+  System.out.println("수정 코드 = " + dcode ); 
+  System.out.println("수정 제목 = " + dtitle );
+  System.out.println("수정 급여 = " + dpay );
+  System.out.println("수정 메일 = " + demail );
   
   msg ="update  guest  set  title=?, pay=?, email=? where code = ?";
-  PST = CN.prepareStatement(msg);
-  	PST.setInt(4, dcode);
-	PST.setString(1, dtitle);
-	PST.setInt(2, dpay);
-	PST.setString(3, demail);
-  PST.executeUpdate(); // 진짜 저장 처리 
-System.out.println("콘솔출력 guest테이블 수정성공했습니다. 11/03");
-  response.sendRedirect("guestList.jsp"); 
-}catch(Exception ex){  }
+  PST = CN.prepareStatement(msg); //데이터없는상태에서 쿼리문문장을 미리서 해석...  
+  	    PST.setString(1, dtitle);
+  	    PST.setInt(2, dpay);
+  	    PST.setString(3, demail);
+  	    PST.setInt(4, dcode);
+  int OK = PST.executeUpdate(); //진짜수
+}catch(Exception ex){ 
+	System.out.println("수정실패이유 : " + ex); //ex.toString()
+	out.print("<h2>데이터수정작업 실패했습니다</h2>"); 
+}
 %>
 	
-<p>
-<a href="guestWrite.jsp">[방명록등록]</a>
-<a href="guestList.jsp">[전체출력]</a>
+<div align="center">
+	<h2>guestEditSave.jsp</h2>
+	<img src="images/tulips.png" width=500 height=300>
+	<p>
+	<% out.print("<h2>데이터수정작업 성공했습니다</h2>"); %>
+	<a href="guestWrite.jsp">[방명록등록]</a>
+	<a href="guestList.jsp">[전체출력]</a>
+</div>
+
+
+<script type="text/javascript">
+   setTimeout("location.href='guestList.jsp'" , 3000); //3000=3초
+</script>	
+
 </body>
 </html>
 
