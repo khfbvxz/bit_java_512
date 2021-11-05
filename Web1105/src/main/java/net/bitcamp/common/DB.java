@@ -3,6 +3,7 @@ package net.bitcamp.common;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+
 public class DB {
 	private Connection CN =null;
 	private Statement ST = null;

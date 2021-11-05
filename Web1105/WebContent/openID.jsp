@@ -25,7 +25,7 @@
       System.out.println("넘어온code = " + data);
     %>
   
-	<h2> openID.jsp </h2>
+	
 	<p></p>
 	<img src="images/bar.gif" width=400><br>
 		<form  name="open_form"  action="openIDSave.jsp">

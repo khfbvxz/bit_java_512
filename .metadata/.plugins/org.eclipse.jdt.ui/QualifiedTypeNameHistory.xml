@@ -25,7 +25,6 @@
     <fullyQualifiedTypeName name="Myhome.Appliances"/>
     <fullyQualifiedTypeName name="net.bit.day15.BitCamp"/>
     <fullyQualifiedTypeName name="java.util.Vector"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="net.bit.day15.GuestDTO"/>
     <fullyQualifiedTypeName name="net.bit.common.GuestDAO"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
@@ -45,4 +44,5 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
