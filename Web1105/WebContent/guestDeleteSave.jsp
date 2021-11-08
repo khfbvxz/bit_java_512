@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<%@ include file="ssi.jsp" %>
 
 <%@ page import="net.bitcamp.guest.GuestDAO" %>
 <%@ page import="net.bitcamp.guest.GuestDTO" %>
@@ -27,26 +26,22 @@
 </div>
 
 <%
-GuestDAO mydao = new GuestDAO();
-
-try{
-  String data = request.getParameter("idx");
-  msg ="delete from guest  where code =  " + data ;
-  ST = CN.createStatement();
-  int OK = ST.executeUpdate(msg);
-  if (OK>0){
-	out.println("<div align='center'>");
-	out.println("<font color='blue'><b>" + data + " 데이터삭제 성공했습니다 </b></font><br>");
-	System.out.println(data + " 데이터 삭제 성공 했습니다");
-	out.println("</div>");
-  }else{ }
-}catch(Exception ex){ System.out.println("삭제실패 이유:" + ex.toString()); }
-//response.sendRedirect("guestList.jsp");
+ String ob = (String)session.getAttribute("naver");
+ System.out.println("11-08-monday 세션값 확인 = " + ob); 
+ if(ob == null  || ob.equals("") || ob ==""){
+%>	
+  <script type="text/javascript">
+    alert("인증된 유저가 아닙니다\n삭제권한이 없습니다 다시 로그인 하세요");
+    location.href="login.jsp";
+  </script>
+<%	 
+ }else{
+	 GuestDAO mydao = new GuestDAO();
+	 int data = Integer.parseInt(request.getParameter("idx"));
+	 mydao.dbDelete(data);
+	 response.sendRedirect("guestList.jsp");
+ }
 %>
-	
-<script type="text/javascript">
-   setTimeout("location.href='guestList.jsp'" , 1000); 
-</script>
 </body>
 </html>
 

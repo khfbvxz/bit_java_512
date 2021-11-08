@@ -10,7 +10,7 @@
   String userb=request.getParameter("pwd");
   msg="select count(*) as cnt from login where userid=? and pwd=? ";
   System.out.println( "loginSave.jsp msg = " + msg);
-  PST=CN.prepareStatement(msg);
+  PST=CN.prepareStatement(msg); //Statement명령어 아닙니다
   	PST.setString(1, usera);
   	PST.setString(2, userb);
   RS=PST.executeQuery(); 
@@ -23,7 +23,6 @@
   	 response.addCookie(ck); //쿠키추가등록
   	 System.out.println("login처리 성공 세션값 , 쿠키값 설정 성공");
   	 response.sendRedirect("guestList.jsp");
-  	
   %>
    <font size=7 color=blue>
      <b><%= usera %>님 로그인 성공!!!</b> <br>
