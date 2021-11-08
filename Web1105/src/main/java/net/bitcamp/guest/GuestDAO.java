@@ -58,20 +58,35 @@ public class GuestDAO extends Global implements Guest {
 		msg = "select * from guest order by code ";
 		ST = CN.createStatement(); 
 		RS = ST.executeQuery(msg);
-		//while문장 GueustDTO dto개체해서  alist.add(dto)
-		while(RS.next()==true) {
-			GuestDTO dto = new GuestDTO();
-			dto.setCode(RS.getInt("code"));
-			dto.setTitle(RS.getString("title"));
-			dto.setPay(RS.getInt("pay"));
-			dto.setEmail(RS.getString("email"));
-			alist.add(dto);
-		}
+		while(RS.next()==true){
+		  GuestDTO dto = new GuestDTO();
+		   dto.setCode(RS.getInt("code"));
+		   dto.setTitle(RS.getString("title"));
+		   dto.setPay(RS.getInt("pay"));
+		   dto.setEmail(RS.getString("email"));
+		   alist.add(dto); 
+		}//while end
 	  }catch(Exception e){ System.out.println("에러이유 " + e.toString());}	
-	  return alist;
+	  return alist; //리턴값 alist변경변경 먼저 하세요
 	}//end
 	
-
+    @Override
+    public GuestDTO dbDetail(int code) { //한건상세
+      GuestDTO dto = new GuestDTO();
+      try {
+    	msg ="select * from guest  where code = " + code ;  
+    	System.out.println("한건상세 쿼리 " + msg);
+    	ST = CN.createStatement();
+    	RS = ST.executeQuery(msg);
+    	if(RS.next()==true){
+  		   dto.setCode(RS.getInt("code"));
+  		   dto.setTitle(RS.getString("title"));
+  		   dto.setPay(RS.getInt("pay"));
+  		   dto.setEmail(RS.getString("email")); 
+  		}//if end
+      }catch(Exception e){ System.out.println("에러이유 " + e.toString());}	
+      return dto; 
+    }//end
 
 	@Override
 	public void dbSearch(String find) {
@@ -99,16 +114,18 @@ public class GuestDAO extends Global implements Guest {
 	public void dbDelete(int data) {
 	  try {
 		 msg ="delete from guest  where code = " + data ;
+		 System.out.println("삭제쿼리 " + msg);
 		 ST = CN.createStatement();
 		 int OK = ST.executeUpdate(msg);
 		 if (OK>0){
 		  System.out.println(data + " 데이터 삭제 성공 했습니다");
-		 }else{ }  
+		 }
 	  }catch(Exception e){ System.out.println("에러이유 " + e.toString());}
 	}//end
 	
 	@Override
 	public void dbUpdate() {
+		
 	 try{
 		
 	 }catch(Exception e){ System.out.println("에러이유 " + e.toString());}		 

@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<%@ include file="ssi.jsp" %>
+
+<%@ page import="net.bitcamp.guest.GuestDAO" %>
+<%@ page import="net.bitcamp.guest.GuestDTO" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
- <title></title>
+ <title> guestList.jsp </title>
  <style type="text/css">
    *{font-size:16pt;}
    a{font-size:16pt; text-decoration:none; font-weight:bold; color:blue;  font-family: Comic Sans MS ; }
@@ -15,19 +17,15 @@
 <body>
 <p></p>
 <%
-try{
-	//guestDetai.jsp단독실행금지 
-	String data = request.getParameter("idx");
-	msg = "select * from guest where code = " + data;
-	ST = CN.createStatement(); 
-    RS = ST.executeQuery(msg);
-    if(RS.next()==true){
-    	Gcode = RS.getInt("code");
-    	Gtitle = RS.getString("title");
-    	Gpay = RS.getInt("pay");
-    	Gemail = RS.getString("email");	
-    }//if end
-}catch(Exception ex){ System.out.println("한건출력에러 11월03일 " + ex.toString());}
+  //guestDetail.jsp단독실행금지 
+  int data = Integer.parseInt(request.getParameter("idx"));
+  
+  GuestDAO mydao = new GuestDAO();
+  GuestDTO  dto = mydao.dbDetail(data);
+  int Gcode = dto.getCode();
+  String Gtitle = dto.getTitle();
+  int Gpay = dto.getPay() ;
+  String Gemail = dto.getEmail();
 %>	    
 	
 <table border="1" width="900"  cellspacing="0" cellpadding="20px">
@@ -54,6 +52,7 @@ try{
   	
   	<tr align="center">
   	   <td colspan="2"> 
+  	   	    <a href="login.jsp">[login]</a>
   			<a href="guestList.jsp">[guestList]</a>
   			<a href="guestDeleteSave.jsp?idx=<%= Gcode %>">[삭제]</a>
   			<a href="guestWrite.jsp">[등록화면]</a>

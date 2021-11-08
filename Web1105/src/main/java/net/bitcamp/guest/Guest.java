@@ -12,10 +12,12 @@ public interface Guest {
 	public void dbSearch(String find);
 	public int  dbSearchCount(String key);
 	
-	//똑같은이름의 메소드중복=오버로딩=overLoading
+	public GuestDTO dbDetail(int code); //가장 마지막 추가 
+	
 	public void dbDelete();
 	public void dbDelete(int code);
 	
 	public void dbUpdate();
 	public void dbUpdate(int code);
-}
+	
+}//Guest interface END
