@@ -30,7 +30,7 @@
  MultipartRequest mr = new MultipartRequest(request, path, size, "UTF-8") ; //request내장개체,경로,사이즈,UTF-8 생성자 4개
  
  String a = mr.getParameter("title");
- int b = Integer.parseInt(mr.getParameter("pay"));
+ int b = Integer.parseInt( mr.getParameter("pay"));
  String c = mr.getParameter("gender");
  String d = mr.getFilesystemName("file1"); //getParameter메소드가 아닌 getFilesystemName()접근 
  
@@ -40,15 +40,16 @@
  out.println("넘어온 파일 =" + d  +"<br>");
  
  try{
-	 msg = "insert into test values(test_seq.nextval, ?, ?, sysdate, ?, ?)";
-	 PST = CN.prepareStatement(msg);
-	 	PST.setString(1, a);
-	 	PST.setInt(2,b);
-	 	PST.setString(3, c);
-	 	PST.setString(4, d);
-	 PST.executeUpdate(); // 괄호안 매개인자 x
-	 System.out.println("test 테이블 데이터 저장 성공!");
- }catch(Exception ex){System.out.println("testSave.jsp 저장 에러이유:" + ex.toString());}
+   msg ="insert into test(code,title,pay,wdate,gender,img_file_name) values(test_seq.nextval, ?, ?, sysdate, ?, ?)";
+   PST = CN.prepareStatement(msg);
+    //code는 시퀀스값으로대체 wdate필드 sysdate
+   	PST.setString(1, a);
+   	PST.setInt(2, b);
+   	PST.setString(3, c);
+   	PST.setString(4, d);
+   PST.executeUpdate(); //괄호안의 매개인자 없어요
+   System.out.println("testSave.jsp test테이블 데이터 저장성공했습니다");
+ }catch(Exception ex){System.out.println("testSave.jsp 저장에러:" + ex.toString());}
 %>	
 
 

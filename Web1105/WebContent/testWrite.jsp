@@ -14,13 +14,22 @@
    
 <script type="text/javascript">
 	function handleFileSelect(){
-	 
+		var files = document.getElementById('file').files[0]; 
+   		var reader = new FileReader();     
+        reader.onload = (function(theFile) {
+          return function(e) {  
+          //원본 var img_view = ['<img src="', e.target.result, '" name="', escape(theFile.name),'"   width="400" height="200"  alt="tis" />'].join('');
+          var img_view = ['<img src=', e.target.result + '  width="400" height="200"  alt="bit" />'].join('');
+              document.getElementById('preview').innerHTML = img_view ;
+          };
+       })(files);
+     reader.readAsDataURL(files);    
 	}
 </script>
 </head>
 <body>
-<h2> testWrite.jsp </h2> <!-- 그림 넣을떄  method="post" enctype="multipart/form-data" 필수  -->
-  <form name="myform" method="post" enctype="multipart/form-data" action="testSave.jsp"    >
+<h2> testWrite.jsp </h2>
+  <form name="myform" method="post" enctype="multipart/form-data"  action="testSave.jsp"    >
       제목:  <input type="text" name="title" >  <br>
       급여:  <input type="text" name="pay" value="71">  <br>
       성별:  <input type="radio" name="gender" value="man" checked="checked">남자
