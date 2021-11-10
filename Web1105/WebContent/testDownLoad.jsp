@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ include file="ssi.jsp" %>
+<%@ page import="java.io.File" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.FileInputStream" %>
+<%@ page import="java.io.OutputStream" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,14 +22,29 @@
 <body>
 
 <h2> testDownload.jsp.jsp 다운로드문서 </h2>	
-<%! 
- String Ggender,Gimage;
-%>
- <%
+<%
  try{ 
+	 //a href="testDownload.jsp?idx전달자=Gcode실제값&fname전달자=Gimage실제값
+	String path = application.getRealPath("storage");
+    System.out.println("경로 = " + path) ;
+ 
 	String data = request.getParameter("idx"); 
-	String fname = request.getParameter("fname"); 
-     
+	String fname = request.getParameter("fname"); //파일이름이 문자열
+    System.out.println("코드데이터:"+ data + "  파일명:" + fname);
+	File file = new File(path, fname);
+	
+	//response.setHeader(1,2);
+	response.setHeader("Content-Disposition", "attachment;filename="+fname);
+	
+	InputStream is  = new FileInputStream(file);
+	OutputStream os = response.getOutputStream();
+	
+	byte[] bt = new byte[(int)file.length()];
+	is.read(bt, 0, bt.length);
+	os.write(bt); //기록
+	
+	is.close();
+	os.close();
   }catch(Exception ex){ System.out.println("testDownload에러 " + ex.toString()); }
  %> 
   
