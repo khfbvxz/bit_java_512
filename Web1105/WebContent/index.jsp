@@ -11,20 +11,22 @@
    </style>
    
    <script type="text/javascript">
-     setTimeout("location.href='testList.jsp'", 5000);
+     setTimeout("location.href='guestList.do'", 3000);
    </script>
 </head>
 <body>
 <%
-String data="";
-data = request.getParameter("idx");
 String display="";
+String data ="";
+data=request.getParameter("idx");
+if(data=="" || data==null){ data=" " ;}
 Cookie[] ck = request.getCookies();
 if(ck != null){
 	for(int i=0; i<ck.length; i++){
 	   System. out.print("bit501쿠키 "+ ck[i].getName() + ":" + ck[i].getValue());
 	   if(data.equals(ck[i].getValue())){
 	      display = ck[i].getValue();
+	      System.out.println(display);
 	   }
 	}
 }
@@ -37,12 +39,11 @@ if(ck != null){
 	  	</video>
 
 	    <br>
-	  	<font color="orange" size=6> 
+	  	<font color="green" size=6> 
 	  	  <b> Waiting...Loading... </b> <br>
-	  	  <b> <%= data %> 고객님  대환영합니다  </b>
+	  	  <b> <%= data %>고객님!!! 대환영합니다  </b>
 	  	</font> <br>	
 	</div>
-	
 </body>
 </html>
 

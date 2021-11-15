@@ -1,8 +1,10 @@
 package net.bitcamp.guest;
 
-
 import java.util.ArrayList;
 import net.bitcamp.common.DB;
+import com.oreilly.servlet.MultipartRequest; //WEB-INF/lib/cos.jar
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 public class GuestDAO extends Global implements Guest {
 
@@ -16,10 +18,10 @@ public class GuestDAO extends Global implements Guest {
 	@Override
 	public void dbInsert(int dcode, String dtitle, int dpay, String demail) {
 	  try {
-		System.out.println("dbInsert함수 넘어온 코드 = " + dcode ); //콘솔창출력
-		System.out.println("dbInsert함수 넘어온 제목 = " + dtitle );
-		System.out.println("dbInsert함수 넘어온 급여 = " + dpay);
-		System.out.println("dbInsert함수 넘어온 메일 = " + demail );
+		System.out.println("dao dbInsert함수 넘어온 코드 = " + dcode ); //콘솔창출력
+		System.out.println("dao dbInsert함수 넘어온 제목 = " + dtitle );
+		System.out.println("dao dbInsert함수 넘어온 급여 = " + dpay);
+		System.out.println("dao dbInsert함수 넘어온 메일 = " + demail + "\n" );
 		  
 		msg ="insert into guest values(?,?,?,?)";
 		PST = CN.prepareStatement(msg);
@@ -28,7 +30,7 @@ public class GuestDAO extends Global implements Guest {
 		  	PST.setInt(3, dpay);
 		  	PST.setString(4, demail);
 		PST.executeUpdate();  //진짜 저장성공처리
-		System.out.println("콘솔출력 guest테이블 저장성공했습니다 11월05일") ;  
+		System.out.println("콘솔출력 guest테이블 저장성공했습니다 11월05일  11월15일 ") ;  
 	  }catch(Exception e){ System.out.println("에러이유 " + e.toString());}
 	}//end
 	
