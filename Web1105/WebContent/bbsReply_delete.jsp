@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<%@ include file="ssi.jsp" %>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-  <title>AAA</title>
+  <title>bbsReply_delete.jsp</title>
   
    <style type="text/css">
      *{font-size:16pt;}
@@ -16,27 +18,18 @@
    </script>
 </head>
 <body>
-	<img src="images/a1.png"><p>
-	Web1105플젝 a태그으로 값 전달 테스트 <br>
-	Web1105플젝 a태그으로 값 전달 테스트 <br>
-	<%
-	    //AAA.jsp문서=guestList.jsp문서
-		int Gcode = 5567 ;
-		String Gtitle = "bitcamp" ;
-	%>
-	<a href="BBB.jsp">[BBB]</a>
-	<a href="guestList.jsp">[guestList]</a>
+<h2> bbsReply_delete.jsp=bbsReply_deleteSave문서와같은역할 </h2>
+<%
+
+ try{
+   msg ="delete bbsreply where ~";
+   
+   //response.sendRedirect("bbsReply.jsp?Ridx=");
+ }catch(Exception ex){System.out.println("bbsreply_delete.jsp 댓글삭제에러:" + ex.toString());}
+%>	
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
 <%@ include file="ssi.jsp" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
- <title>bbsList.jsp</title>
+ <title>ccsList.jsp</title>
  <style type="text/css">
    *{font-size:16pt;}
-   a{font-size:16pt; text-decoration:none;   font-family: Comic Sans MS ; }
-   a:hover{font-size:20pt; text-decoration:underline;  font-family: Comic Sans MS ; }
+   a{font-size:16pt; text-decoration:none;  color:green; font-family: Comic Sans MS ; }
+   a:hover{font-size:20pt; text-decoration:underline; color:green;  font-family: Comic Sans MS ; }
  </style>
 </head>
 
 <body>
-
-
+<h2>ccsList.jsp문서 페이지&검색</h2>
 <%
  msg = "select count(*) as cnt from bbs "; //guest기술하면 bbs
  ST=CN.createStatement();
@@ -43,13 +41,13 @@
  }
  
  //이름조회  name like  '%b%'  [1][2클릭][3][4][5][6]
- //http://localhost:8080/Web1105/bbsList.jsp?pageNum=2&keyfield=name&keyword=b
- //http://localhost:8080/Web1105/bbsList.jsp?pageNum=2
+ //http://localhost:8080/Web1105/ccsList.jsp?pageNum=2&keyfield=name&keyword=b
+ //http://localhost:8080/Web1105/ccsList.jsp?pageNum=2
  returnpage="&keyfield="+skey+"&keyword="+sval;
  
  sqry = " where " + skey +" like '%"+sval+"%' "; 
  String find="select count(*) as cnt from bbs  where " + skey +" like '%"+sval+"%' ";
- //System.out.println(find);
+ System.out.println(find);
  ST = CN.createStatement();
  RS = ST.executeQuery(find);
  if(RS.next()==true){ Gtotal = RS.getInt("cnt"); }
@@ -70,12 +68,11 @@
  if(endpage>pageCount){ endpage=pageCount ; } //[이전][31][32] 출력이 됨 
 %>
 
-
 <table border="1" width="900" cellspacing="0" cellpadding="3px">
 <tr>
    <td colspan=7 align="right">
         <a href="#">[로그인]</a>
-        <a href="bbsList.jsp">[bbs리스트]</a>
+        <a href="ccsList.jsp">[bbs리스트]</a>
    		레코드갯수: <%=Gtotal %>/<%= GGtotal %> &nbsp; &nbsp;
    </td>
 </tr>
@@ -85,17 +82,13 @@
 </tr>	
 <%
 try{
-SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd EEE요일 aaa");
-java.util.Date dt = new java.util.Date();
-String display = sdf.format(dt);  //현재날짜로 테스트 
-//System.out.println(display);
-
+ //msg = "select rownum rn, b.* from bbs b where name like '%b%' ";
  String a = "select * from (";
  String b = "select rownum rn,sabun,name,title,wdate,pay,hit,email from ";
  String c = "(select * from bbs where "+skey+" like '%"+sval+"%')";
  String d = ") where rn between " + startRow + " and " + endRow;
  msg = a+b+c+d;
-   //System.out.println(msg);
+   System.out.println(msg);
    ST = CN.createStatement();
    RS = ST.executeQuery(msg);
   while(RS.next()==true) {
@@ -104,7 +97,6 @@ String display = sdf.format(dt);  //현재날짜로 테스트
      Gname = RS.getString("name");
      Gtitle = RS.getString("title");
      Gwdate = RS.getDate("wdate");
-     display= sdf.format(Gwdate);
      Ghit = RS.getInt("hit");
      Gemail = RS.getString("email");
 %>    	
@@ -112,8 +104,8 @@ String display = sdf.format(dt);  //현재날짜로 테스트
     <td>  <%= Grn %> </td>
     <td>  <%= Gsabun %> </td>
     <td>  <%= Gname %>  </td>
-    <td> <a href="bbsDetail.jsp?idx=<%=Gsabun%>">  <%= Gtitle %>  </a> </td>
-    <td>  <%= display %> </td>
+    <td> <a href="bbsDetail.jsp?idx=<%=Gsabun%>">  <%= Gtitle %> </a>  </td>
+    <td>  <%= Gwdate %> </td>
     <td>  <%= Ghit %> </td>
     <td>  <%= Gemail %> </td>
   </tr>  
@@ -126,7 +118,7 @@ String display = sdf.format(dt);  //현재날짜로 테스트
  	  <%
  	  	//이전표시 startpage>10
  	    if(startpage>10){
- 		  out.println("<a href=bbsList.jsp?pageNum="+(startpage-10)+">[이전]</a>");
+ 		  out.println("<a href=ccsList.jsp?pageNum="+(startpage-10)+">[이전]</a>");
  	    }
  	  	
  	    // [1] ~ [10]	 
@@ -134,20 +126,20 @@ String display = sdf.format(dt);  //현재날짜로 테스트
  	    	if(i==pageNUM){
  	    	  out.println("<font style='font-size:26pt; color:red'>["+i+"]</font>");	
  	    	}else{
- 		      out.println("<a href=bbsList.jsp?pageNum="+(i+returnpage)+">["+i+"]</a>");
+ 		      out.println("<a href=ccsList.jsp?pageNum="+(i+returnpage)+">["+i+"]</a>");
  	    	}
  	    }
  	  
  	  //다음표시 endpage<32
  	  if(endpage<pageCount){
- 		out.println("<a href=bbsList.jsp?pageNum="+(startpage+10)+">[다음]</a>");
+ 		out.println("<a href=ccsList.jsp?pageNum="+(startpage+10)+">[다음]</a>");
  	  }
  	  %>  
  	</td>
  </tr>
  <tr align="center">
  	<td colspan="7">
- 	  <form name="myform" action="bbsList.jsp">
+ 	  <form name="myform" action="ccsList.jsp">
  	    검색:
  	      <select name="keyfield">
  	      	<option value="">---검색필드---</option>
@@ -159,10 +151,9 @@ String display = sdf.format(dt);  //현재날짜로 테스트
  	      <input type="submit" value="bbs검색">
  	  </form>
  	</td>
- </tr> 
+ </tr>
+ 
 </table>
-<p>
-
 </body>
 </html>
 

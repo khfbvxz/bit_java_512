@@ -25,8 +25,8 @@
 		PreparedStatement PST;
 		ResultSet RS;
 		
-		int Grn,Grow, Gsabun, Gcode, Gpay, Ghit, Gtotal, GStotal;
-		String  Gtitle, Gemail, Gmemo, GID, GPWD;
+		int Grn,Grow, Gsabun, Gcode, Gpay, Ghit, Gtotal, GStotal , GGtotal;
+		String  Gtitle, Gemail, Gmemo, GID, GPWD, Gname;
 		java.util.Date GDate, Gwdate;
 		String Gmsg, msg , Gdata;
 		int Rrn, Rnum, Rsabun, Rcode;

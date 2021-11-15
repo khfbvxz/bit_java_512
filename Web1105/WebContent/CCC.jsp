@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <title>AAA</title>
+  <title>CCC</title>
   
    <style type="text/css">
      *{font-size:16pt;}
@@ -16,26 +16,19 @@
    </script>
 </head>
 <body>
-	<img src="images/a1.png"><p>
-	Web1105플젝 a태그으로 값 전달 테스트 <br>
-	Web1105플젝 a태그으로 값 전달 테스트 <br>
-	<%
-	    //AAA.jsp문서=guestList.jsp문서
-		int Gcode = 5567 ;
-		String Gtitle = "bitcamp" ;
-	%>
-	<a href="BBB.jsp">[BBB]</a>
+
+<hr color="red" size=5>
+<div align="center">
+	<h2> CCC.jsp forward문서사용 </h2>
+	<h2> CCC.jsp forward문서사용 </h2>
+	<img src="images/a1.png">
+	<p></p>
+	<a href="AAA.jsp">[AAA]</a>
 	<a href="guestList.jsp">[guestList]</a>
+	<a href="bbsList.jsp">[bbsList]</a>
+</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 

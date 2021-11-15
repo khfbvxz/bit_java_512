@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<%@ include file="ssi.jsp" %>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-  <title>AAA</title>
+  <title>bbsReply_edit.jsp</title>
   
    <style type="text/css">
      *{font-size:16pt;}
@@ -16,27 +18,18 @@
    </script>
 </head>
 <body>
-	<img src="images/a1.png"><p>
-	Web1105플젝 a태그으로 값 전달 테스트 <br>
-	Web1105플젝 a태그으로 값 전달 테스트 <br>
-	<%
-	    //AAA.jsp문서=guestList.jsp문서
-		int Gcode = 5567 ;
-		String Gtitle = "bitcamp" ;
-	%>
-	<a href="BBB.jsp">[BBB]</a>
-	<a href="guestList.jsp">[guestList]</a>
+<h2> bbsReply_edit.jsp </h2>
+<%
+ //bbsReply_edit.jsp=bbsReply_editSave.jsp같은역할
+ try{
+   msg ="update  where ~";
+   
+   //response.sendRedirect("bbsReply.jsp?Ridx=");
+ }catch(Exception ex){System.out.println("bbsreply_edit.jsp 댓글수정에러:" + ex.toString());}
+%>	
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 
